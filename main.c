@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:08 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/27 17:15:19 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/05/27 22:45:15 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ static void render_pixel(t_complex *fractal, int x, int y)
 
 	i = 0;
     color = 0;
-	z.re_z = (map(x, -2, +2, 0, WEIGHT) * fractal->zoom) + fractal->shift_x;
-	z.im_z = (map(y, +2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	z.re_z = (scale(x, -2, +2, 0, WEIGHT) * fractal->zoom) + fractal->shift_x;
+	z.im_z = (scale(y, +2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
     mandelbrot_or_julia(&z, &c, fractal);
 	while (i < fractal->max_iter)
 	{
 		z = complex_add(complex_square(z), c);
 		if ((z.re_z * z.re_z) + (z.im_z * z.im_z) > fractal->modulus)
 		{
-			color = map(i, 0xFFFFFF, 0x000000, 0, fractal->max_iter);
+			color = scale(i, 0xFFFFFF, 0x00FFFF, 0, fractal->max_iter);
             mlx_pixel_put(fractal->mlx_ptr, fractal->win_ptr, x, y, color);
 			return ;
 		}

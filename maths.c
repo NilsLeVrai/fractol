@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:09:35 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/27 17:09:39 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/05/27 22:50:56 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,19 @@ t_z complex_square(t_z z)
 {
     t_z res;
 
-    res.re_z = (z.re_z * z.re_z) - (z.im_z * z.im_z);
-    res.im_z = 2 * z.re_z * z.im_z;
+    res.re_z = (z.re_z * z.re_z) - (z.im_z * z.im_z); //a^2 - b^2
+    res.im_z = 2 * z.re_z * z.im_z; //2abi
     return (res);
 }
 
-double map(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
+double scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
 {
-    return (new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min;
+    double gap;
+    double div;
+
+    gap = new_max - new_min;
+    div = gap / old_max - old_min;
+    return (new_min + unscaled_num * div);
 }
 
 double atod(char *s)

@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:01 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/27 17:14:01 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/05/27 22:45:46 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void check_errors(t_complex *fractal, int argc, char **argv);
 char    *ft_strchr(const char *s, int c);
 
-double map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
+double scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 void run_mlx(t_complex *fractal);
 void render_fractal(t_complex *fractal);
 #endif
