@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   introduction.c                                     :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 13:53:01 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/29 16:36:39 by niabraha         ###   ########.fr       */
+/*   Created: 2024/05/29 15:30:48 by niabraha          #+#    #+#             */
+/*   Updated: 2024/05/29 16:33:15 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-void	introduction_message(void)
+void	render_fractal(t_complex *fractal)
 {
-	printf("Hi! 👋\nWelcome to my fractol project. It uses the MLX42 library");
-	printf(" and is intended to run on a UNIX machine.\nGiven below are the");
-	printf("main commands in order to use the program properly:\n\n\n");
+	(void)fractal;
 }

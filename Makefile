@@ -5,54 +5,43 @@
 #                                                     +:+ +:+         +:+      #
 #    By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/20 14:25:31 by niabraha          #+#    #+#              #
-#    Updated: 2024/05/29 13:59:56 by niabraha         ###   ########.fr        #
+#    Created: 2024/03/25 14:27:18 by tclaereb          #+#    #+#              #
+#    Updated: 2024/05/29 16:49:40 by niabraha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_F = fractol
 
-SRC = errors.c \
+_SRCS = errors.c \
 		init.c \
 		introduction.c \
 		main.c \
 		maths.c \
-		utils.c 
+		render.c \
+		utils.c
 
 SRCS_DIR = src
 
-SRCO_F = $(addprefix $(SRCS_DIR)/, $(SRC))
+SRCS = $(addprefix $(SRCS_DIR)/, $(_SRCS))
 
-FLAG = -O3 -Wall -Wextra -Werror -fsanitize=address -g3 -I./MLX42/include/MLX42
+SRCO = $(SRCS:.c=.o)
 
-RED = \033[0;31m
-GREEN = \033[0;32m
-YELLOW = \033[0;33m
-NO_COLOR = \033[0m
+FLAG = -g3 -Wall -Wextra -Werror -fsanitize=address
+INC = -I includes/
 
-MLX = ./MLX42/build/libmlx42.a
+all : $(NAME_C) $(NAME_F)
 
-all : $(NAME_F) $(MLX)
+$(NAME_F) : $(SRCO) 
+	cc $(FLAG) -o $(NAME_F) $(SRCO) MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 
-$(MLX) : 
-	@cmake ./MLX42 -B ./MLX42/build && make -s -C ./MLX42/build -j4
-	@rm -rf ./MLX42/build
-	@rm -rf ./MLX42/CMakeFiles
-	@echo "$(GREEN)MLX compiled! ✅$(NO_COLOR)"
-
-$(NAME_F) : $(SRCO_F)
-	@cc $(FLAG) -o $(NAME_F) $(SRCO_F) $(MLX)
-	@echo "$(GREEN)Fractol compiled! ✅$(NO_COLOR)"
+%.o : %.c
+	cc $(FLAG) -c $< -o $@ $(INC)
 
 clean :
-	@/bin/rm -f $(SRCO_F)
-	@echo "$(YELLOW)Make clean done! 🤡$(NO_COLOR)"
-	
+	/bin/rm -f $(SRCO)
 
 fclean : clean
-	@/bin/rm -f $(NAME_F)
-	@/bin/rm -f $(SRCO_F)
-	@echo "$(RED)Make fclean done! 🚮$(NO_COLOR)"
+	/bin/rm -f $(NAME_F)
 
 re :
 	make fclean
