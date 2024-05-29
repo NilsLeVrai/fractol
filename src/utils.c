@@ -1,16 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utlis.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niabraha <niabraha@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:09:46 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/27 17:09:49 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:53:56 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../include/fractol.h"
+
+double	atod(char *s)
+{
+	double	res;
+	double	dec;
+	int		i;
+	int		sign;
+
+	res = 0;
+	dec = 0;
+	i = 0;
+	sign = 1;
+	while (s[i] == 32 || (s[i] >= 9 && s[i] <= 13))
+		i++;
+	if (s[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		res = res * 10 + s[i] - '0';
+		i++;
+	}
+	if (s[i] == '.')
+	{
+		i++;
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			res += dec * (s[i] - '0');
+			dec /= 10;
+			i++;
+		}
+	}
+	return (res * sign);
+}
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
