@@ -6,11 +6,21 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:18:43 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/29 16:45:36 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:59:03 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
+
+void image_to_window(mlx_t *mlx, mlx_image_t *image, int x, int y)
+{
+	if (mlx_image_to_window(mlx, image, x, y) == -1)
+	{
+		mlx_close_window(mlx);
+		printf("%s", mlx_strerror(mlx_errno));
+		exit(EXIT_FAILURE);
+	}
+}
 
 void	run_mlx(t_complex fractal, mlx_t **mlx, mlx_image_t **img)
 {
@@ -18,7 +28,6 @@ void	run_mlx(t_complex fractal, mlx_t **mlx, mlx_image_t **img)
 	if (!(*mlx))
 	{
 		printf("Error: mlx_init failed\n");
-		free(*mlx);
 		exit(EXIT_FAILURE);
 	}
 	*img = mlx_new_image(*mlx, fractal.width, fractal.height);
@@ -26,7 +35,6 @@ void	run_mlx(t_complex fractal, mlx_t **mlx, mlx_image_t **img)
 	{
 		mlx_close_window(*mlx);
 		printf("Error: mlx_new_image failed\n");
-		free(*img);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -42,5 +50,5 @@ void	init_structure(t_complex *fractal)
 	fractal->shift_y = 0;
 	fractal->height = HEIGHT;
 	fractal->width = WIDTH;
-	fractal->max_iter = 100;
+	fractal->max_iter = 200;
 }

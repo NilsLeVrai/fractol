@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:01 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/29 16:34:57 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:28:03 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct 		s_complex
     double 			modulus;
     double 			shift_x;
     double 			shift_y;
-	unsigned short	height;
-	unsigned short	width;
+	int				height;
+	int				width;
     int 			max_iter;
 }               	t_complex;
 
@@ -62,8 +62,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void check_errors(t_complex *fractal, int argc, char **argv);
 char    *ft_strchr(const char *s, int c);
 
-double	scale(double i, double old_min, double old_max);
+double	scale(double i, double new_min, double new_max, double old_min, double old_max);
 void run_mlx(t_complex fractal, mlx_t **mlx, mlx_image_t **img);
 void render_fractal(t_complex *fractal);
+void image_to_window(mlx_t *mlx, mlx_image_t *image, int x, int y);
 #endif
 

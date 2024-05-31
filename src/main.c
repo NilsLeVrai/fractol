@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:26 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/29 16:55:42 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/05/31 16:00:43 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int	main(int argc, char **argv)
 	run_mlx(fractal, &mlx, &img);
 	fractal.mlx = mlx;
 	fractal.img = img;
+	image_to_window(mlx, img, 0, 0);
 	render_fractal(&fractal);
 	mlx_loop(mlx);
 	mlx_terminate(fractal.mlx);
-	return (0);
+	return (EXIT_SUCCESS);
 }

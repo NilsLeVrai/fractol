@@ -6,13 +6,14 @@
 #    By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/25 14:27:18 by tclaereb          #+#    #+#              #
-#    Updated: 2024/05/29 16:49:40 by niabraha         ###   ########.fr        #
+#    Updated: 2024/05/31 16:04:22 by niabraha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_F = fractol
 
-_SRCS = errors.c \
+_SRCS = colors.c \
+		errors.c \
 		init.c \
 		introduction.c \
 		main.c \
@@ -26,7 +27,7 @@ SRCS = $(addprefix $(SRCS_DIR)/, $(_SRCS))
 
 SRCO = $(SRCS:.c=.o)
 
-FLAG = -g3 -Wall -Wextra -Werror -fsanitize=address
+FLAG = -g3 -Wall -Wextra -Werror -O3 -fsanitize=address
 INC = -I includes/
 
 all : $(NAME_C) $(NAME_F)
