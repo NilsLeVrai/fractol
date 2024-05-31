@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:09:35 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/30 17:28:57 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/05/31 19:45:19 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,52 @@ t_z	complex_square(t_z z)
 	return (res);
 }
 
-double	scale(double i, double new_min, double new_max, double old_min, double old_max)
+double	scale(double unscaled_num, double old_min, double old_max)
 {
-/* 	double	gap;
+	double	gap;
 	double	div;
 	double	new_min;
 	double	new_max;
 
 	new_min = -2;
-	new_max = 2; 
+	new_max = 2;
 	gap = new_max - new_min;
 	div = gap / old_max - old_min;
-	return (new_min + i * div); */
-	return (new_max - new_min) * (i - old_min) / (old_max - old_min) + new_min;
+	return (new_min + unscaled_num * div);
+}
+
+double	atod(char *s)
+{
+	double	res;
+	double	dec;
+	int		i;
+	int		sign;
+
+	res = 0;
+	dec = 0.1;
+	i = 0;
+	sign = 1;
+	while (s[i] == 32 || (s[i] >= 9 && s[i] <= 13))
+		i++;
+	if (s[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		res = res * 10 + s[i] - '0';
+		i++;
+	}
+	if (s[i] == '.')
+	{
+		i++;
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			res += dec * (s[i] - '0');
+			dec /= 10;
+			i++;
+		}
+	}
+	return (res * sign);
 }
