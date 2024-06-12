@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:01 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/31 19:41:44 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:42:53 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 typedef struct s_complex
 {
+	t_img		img;
 	double		julia_re_z;
 	double		julia_im_z;
 	void		*mlx_ptr;
@@ -40,6 +41,15 @@ typedef struct s_z
 	double	re_z;
 	double	im_z;
 }			t_z;
+
+typedef struct s_img_data_address
+{
+	char	*data;
+	int		bpp;
+	int		size_line;
+	int		endian;
+	void	*img_ptr;
+}			t_img;
 
 double	atod(char *s);
 t_z		complex_add(t_z z1, t_z z2);

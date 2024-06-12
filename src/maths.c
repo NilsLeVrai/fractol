@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:09:35 by niabraha          #+#    #+#             */
-/*   Updated: 2024/05/31 19:45:19 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:31:33 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ double	scale(double unscaled_num, double old_min, double old_max)
 	return (new_min + unscaled_num * div);
 }
 
+static int ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+static int ft_isspace(int c)
+{
+	return (c == 32 || (c >= 9 && c <= 13));
+}
+
 double	atod(char *s)
 {
 	double	res;
@@ -57,15 +67,18 @@ double	atod(char *s)
 	sign = 1;
 	while (s[i] == 32 || (s[i] >= 9 && s[i] <= 13))
 		i++;
-	if (s[i] == '-')
+	if (s[i] == '-' || s[i] == '+')
 	{
-		sign = -1;
+		if (s[i] == '-')
+			sign = -1;
 		i++;
 	}
-	while (s[i] >= '0' && s[i] <= '9')
+	while (s[i] >= '0' && s[i] <= '9' && s[i] != '.')
 	{
 		res = res * 10 + s[i] - '0';
 		i++;
+		if (s[i] = '.')
+			break ;
 	}
 	if (s[i] == '.')
 	{
@@ -79,3 +92,11 @@ double	atod(char *s)
 	}
 	return (res * sign);
 }
+
+/* # include <stdio.h>
+
+int main ()
+{
+	char *str = "76:23.456";
+	printf("%f\n", atod(str));
+} */
