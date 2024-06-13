@@ -6,25 +6,51 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 20:24:42 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/10 17:14:45 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/13 18:30:47 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-void zoom_hook(int key, int x, int y, t_complex *fractal)
+int	closing_window(t_complex *fractal)
 {
-	if (key == 4)
-	{
-		fractal->zoom *= 1.1;
-		fractal->shift_x += (scale(x, 0, WIDTH) * fractal->zoom) - (scale(x, 0, WIDTH) * fractal->zoom * 1.1);
-		fractal->shift_y += (scale(y, 0, HEIGHT) * fractal->zoom) - (scale(y, 0, HEIGHT) * fractal->zoom * 1.1);
-	}
-	else if (key == 5)
-	{
-		fractal->zoom /= 1.1;
-		fractal->shift_x += (scale(x, 0, WIDTH) * fractal->zoom) - (scale(x, 0, WIDTH) * fractal->zoom / 1.1);
-		fractal->shift_y += (scale(y, 0, HEIGHT) * fractal->zoom) - (scale(y, 0, HEIGHT) * fractal->zoom / 1.1);
-	}
+	mlx_destroy_image(fractal->mlx_ptr,
+					fractal->img.img_ptr);
+	mlx_destroy_window(fractal->mlx_ptr,
+						fractal->win_ptr);
+	mlx_destroy_display(fractal->mlx_ptr);
+	free(fractal->mlx_ptr);
+	exit(EXIT_SUCCESS);
+}
+
+int	key_capture(int keysym, t_complex *fractal)
+{
+	if (keysym == XK_Escape)
+		closing_window(fractal);
+	if (keysym == XK_Left)
+		fractal->shift_x -= (0.5 * fractal->zoom);	
+	else if (keysym == XK_Right)
+		fractal->shift_x += (0.5 * fractal->zoom);	
+	else if (keysym == XK_Up)
+		fractal->shift_y -= (0.5 * fractal->zoom);	
+	else if (keysym == XK_Down)
+		fractal->shift_y += (0.5 * fractal->zoom);	
+	else if (keysym == XK_plus)
+		fractal->max_iter += 10;
+	else if (keysym == XK_minus)	
+		fractal->max_iter -= 10;
 	render_fractal(fractal);
+	return 0;
+}
+
+int mouse_capture(int key, int x, int y, t_complex *fractal)
+{
+	x++;
+	y++;
+	if (key == Button5)
+		fractal->zoom *= 1.1;
+	else if (key == Button4)
+		fractal->zoom /= 1.1;
+	render_fractal(fractal);
+	return (0);
 }
