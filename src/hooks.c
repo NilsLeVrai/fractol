@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 20:24:42 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/13 18:30:47 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/17 17:58:01 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 int	closing_window(t_complex *fractal)
 {
-	mlx_destroy_image(fractal->mlx_ptr,
-					fractal->img.img_ptr);
-	mlx_destroy_window(fractal->mlx_ptr,
-						fractal->win_ptr);
+	mlx_destroy_window(fractal->mlx_ptr, fractal->win_ptr);
 	mlx_destroy_display(fractal->mlx_ptr);
 	free(fractal->mlx_ptr);
-	exit(EXIT_SUCCESS);
+	exit(0);
+	return (0);
 }
 
 int	key_capture(int keysym, t_complex *fractal)

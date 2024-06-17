@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:08 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/11 15:16:40 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/17 13:57:19 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int	main(int argc, char **argv)
 {
 	t_complex	fractal;
 
+	
 	check_errors(&fractal, argc, argv);
 	run_mlx(&fractal);
 	render_fractal(&fractal);
