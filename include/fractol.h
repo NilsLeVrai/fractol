@@ -6,14 +6,14 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:01 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/17 17:50:52 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:30:09 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
-# define HEIGHT 100
-# define WIDTH 100
+# define HEIGHT 800
+# define WIDTH 800
 
 # include <stdlib.h>
 # include <stdio.h>
