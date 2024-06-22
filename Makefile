@@ -4,8 +4,7 @@ SOURCES_FILES = colors.c \
 				hooks.c \
 				init.c \
 				main.c \
-				maths.c \
-				utils.c
+				maths.c 
 
 SRCS_F_DIR = src
 

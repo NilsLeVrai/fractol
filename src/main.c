@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:08 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/22 15:08:18 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:37:05 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,15 @@ void	render_fractal(t_complex *fractal)
 	mlx_loop(fractal->mlx_ptr);
 }
 
+static void print_error()
+{
+	printf("Invalid fractal type. Write either mandelbrot or julia ");
+	printf("followed by two numbers.\n");
+	printf("Example: ./fractol mandelbrot\n");
+	printf("Example: ./fractol julia -0.7 0.27015\n");
+	exit(EXIT_FAILURE);
+}
+
 void	check_errors(t_complex *fractal, int argc, char **argv)
 {
 	if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
@@ -84,17 +93,10 @@ void	check_errors(t_complex *fractal, int argc, char **argv)
 			fractal->type = 2;
 		}
 		else
-			//ft_printf("Invalid float number.\n");
-			printf("Example: ./fractol julia -0.7 0.27015\n");
+			print_error();
 	}
 	else
-	{
-		printf("Invalid fractal type. Write either mandelbrot or julia ");
-		printf("followed by two numbers.\n");
-		printf("Example: ./fractol mandelbrot\n");
-		printf("Example: ./fractol julia -0.7 0.27015\n");
-		exit(EXIT_FAILURE);
-	}
+		print_error();
 }
 
 int	main(int argc, char **argv)
