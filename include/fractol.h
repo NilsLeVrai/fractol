@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:01 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/20 17:30:09 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:14:07 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,18 @@ typedef struct s_z
 	double	im_z;
 }			t_z;
 
-
 double	atod(char *s);
 t_z		complex_add(t_z z1, t_z z2);
 t_z		complex_square(t_z z);
 
 char	*ft_strchr(const char *s, int c);
+int		check_atod(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	check_errors(t_complex *fractal, int argc, char **argv);
 
 double	scale(double unscaled_num, double old_min, double old_max);
 void	run_mlx(t_complex *fractal);
 void	render_fractal(t_complex *fractal);
-int key_capture(int keycode, t_complex *fractal);
-int mouse_capture(int key, int x, int y, t_complex *fractal);
+int		key_capture(int keycode, t_complex *fractal);
+int		mouse_capture(int key, int x, int y, t_complex *fractal);
 #endif

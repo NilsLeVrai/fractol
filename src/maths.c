@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:09:35 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/13 18:05:08 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/22 14:48:42 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,40 @@ double	atod(char *s)
 	return (res * sign);
 }
 
+int	check_atod(char *s)
+{
+	int	i;
+	int	dot;
+
+	i = 0;
+	dot = 0;
+	while (s[i] == 32 || (s[i] >= 9 && s[i] <= 13))
+		i++;
+	if (s[i] == '-' || s[i] == '+')
+		i++;
+	if (s[i] == '.')
+	{
+		i++;
+		dot++;
+	}
+	while (s[i] >= '0' && s[i] <= '9' && s[i] != '.')
+		i++;
+	if (s[i] == '.')
+	{
+		dot++;
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+		i++;
+	if (s[i] == 0 && dot == 1)
+		return (1);
+	return (0);
+}
+
 /* # include <stdio.h>
 
 int main ()
 {
-	char *str = "76:23.456";
-	printf("%f\n", atod(str));
+	char *str = ".6";
+	printf("%d\n", check_atod(str));
 } */

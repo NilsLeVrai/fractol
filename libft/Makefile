@@ -6,7 +6,7 @@
 #    By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/17 10:47:50 by niabraha          #+#    #+#              #
-#    Updated: 2024/06/12 15:52:31 by niabraha         ###   ########.fr        #
+#    Updated: 2024/06/22 15:07:25 by niabraha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,6 @@ $(NAME): $(OBJ)
 	@$(AR) $(ARFLAGS) $@ $^
 	@echo "$(BLUE)Libft.a created!$(NO_COLOR)"
 	
-
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	

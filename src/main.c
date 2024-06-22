@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:08 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/17 13:57:19 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:08:18 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,15 @@ void	check_errors(t_complex *fractal, int argc, char **argv)
 		fractal->type = 1;
 	else if (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
 	{
-		fractal->julia_re_z = atod(argv[2]);
-		fractal->julia_im_z = atod(argv[3]);
-		fractal->type = 2;
+		if (check_atod(argv[2]) && check_atod(argv[3]))
+		{
+			fractal->julia_re_z = atod(argv[2]);
+			fractal->julia_im_z = atod(argv[3]);
+			fractal->type = 2;
+		}
+		else
+			//ft_printf("Invalid float number.\n");
+			printf("Example: ./fractol julia -0.7 0.27015\n");
 	}
 	else
 	{
@@ -95,16 +101,13 @@ int	main(int argc, char **argv)
 {
 	t_complex	fractal;
 
-	
 	check_errors(&fractal, argc, argv);
 	run_mlx(&fractal);
 	render_fractal(&fractal);
-	//free(fractal.mlx_ptr);
 }
 
 /*
 TODO:
 check les arguments pour julia
-evenements (ctrl + d, les couleurs qui changent, la souris sa mere)
 free leaks
 */
