@@ -16,7 +16,7 @@ SRCO_F = $(SRCS_F:.c=.o)
 MAKE_LIBFT = $(MAKE) -C ./libft
 LIBFT = ./libft/libft.a
 
-FLAG = -g3 -Wall -Wextra -Werror
+FLAG = -O3 -Wall -Wextra -Werror
 INC = -I includes/
 
 RED = \033[0;31m

@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:09:35 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 16:55:57 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:05:07 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,8 @@ double	atod(char *s)
 	init_atod(&atod_s);
 	while (s[atod_s.i] == 32 || (s[atod_s.i] >= 9 && s[atod_s.i] <= 13))
 		atod_s.i++;
-	if (s[atod_s.i] == '-' || s[atod_s.i] == '+')
-	{
-		if (s[atod_s.i++] == '-')
-			atod_s.sign = -1;
-	}
+	if (s[atod_s.i++] == '-')
+		atod_s.sign = -1;
 	while (s[atod_s.i] >= '0' && s[atod_s.i] <= '9' && s[atod_s.i] != '.')
 	{
 		atod_s.res = atod_s.res * 10 + s[atod_s.i++] - '0';

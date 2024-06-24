@@ -6,7 +6,7 @@
 #    By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/17 10:47:50 by niabraha          #+#    #+#              #
-#    Updated: 2024/06/22 15:07:25 by niabraha         ###   ########.fr        #
+#    Updated: 2024/06/24 17:55:50 by niabraha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FILES_PT1 = ft_atoi.c \
 			ft_isascii.c \
 			ft_isdigit.c \
 			ft_isprint.c \
+			ft_isspace.c \
 			ft_memchr.c \
 			ft_memcmp.c \
 			ft_memcpy.c \
