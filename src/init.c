@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:09:55 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 16:53:11 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:25:47 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	init_data_struct(t_complex *fractal)
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->max_iter = 100;
+	fractal->color = 0x000000;
 }
 
 void	run_mlx(t_complex *fractal)

@@ -6,13 +6,13 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:39:45 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 16:53:41 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:33:57 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-int	julia_track(int x, int y, t_complex *fractal)
+int	julia_click_event(int x, int y, t_complex *fractal)
 {
 	if (fractal->type == 2)
 	{

@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 20:24:42 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 16:53:15 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:22:41 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	key_capture(int keysym, t_complex *fractal)
 {
 	if (keysym == XK_Escape)
 		closing_window(fractal);
-	if (keysym == XK_Left)
+	else if (keysym == XK_Left)
 		fractal->shift_x -= (0.5 * fractal->zoom);
 	else if (keysym == XK_Right)
 		fractal->shift_x += (0.5 * fractal->zoom);
@@ -48,24 +48,24 @@ int	key_capture(int keysym, t_complex *fractal)
 		fractal->shift_y -= (0.5 * fractal->zoom);
 	else if (keysym == XK_Down)
 		fractal->shift_y += (0.5 * fractal->zoom);
-	else if (keysym == XK_plus)
+	else if (keysym == XK_Page_Up && fractal->max_iter < 200)
 		fractal->max_iter += 10;
-	else if (keysym == XK_minus)
+	else if (keysym == XK_Page_Down && fractal->max_iter > 10)
 		fractal->max_iter -= 10;
+	else if (keysym == XK_1)
+		fractal->type = 1;
 	render_fractal(fractal);
 	return (0);
 }
 
 int	mouse_capture(int key, int x, int y, t_complex *fractal)
 {
-	x++;
-	y++;
 	if (key == Button5)
 		fractal->zoom *= 1.1;
 	else if (key == Button4)
 		fractal->zoom /= 1.1;
 	else if (key == Button1)
-		julia_track(x, y, fractal);
+		julia_click_event(x, y, fractal);
 	render_fractal(fractal);
 	return (0);
 }

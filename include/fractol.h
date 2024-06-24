@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:01 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 16:44:53 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:30:30 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_complex
 	double		shift_x;
 	double		shift_y;
 	int			max_iter;
+	int			color;
 }				t_complex;
 
 typedef struct s_z
@@ -79,6 +80,6 @@ int		closing_window(t_complex *fractal);
 void	print_error(void);
 void	render_pixel(t_complex *fractal, int x, int y);
 void	mandelbrot_or_julia(t_z *z, t_z *c, t_complex *fractal);
-int		julia_track(int x, int y, t_complex *fractal);
+int		julia_click_event(int x, int y, t_complex *fractal);
 
 #endif
