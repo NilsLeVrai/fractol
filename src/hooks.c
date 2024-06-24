@@ -6,14 +6,29 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 20:24:42 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/22 14:34:27 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:53:15 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
+double	scale(double unscaled_num, double old_min, double old_max)
+{
+	double	gap;
+	double	div;
+	double	new_min;
+	double	new_max;
+
+	new_min = -2;
+	new_max = 2;
+	gap = new_max - new_min;
+	div = gap / old_max - old_min;
+	return (new_min + unscaled_num * div);
+}
+
 int	closing_window(t_complex *fractal)
 {
+	mlx_destroy_image(fractal->mlx_ptr, fractal->img.img_ptr);
 	mlx_destroy_window(fractal->mlx_ptr, fractal->win_ptr);
 	mlx_destroy_display(fractal->mlx_ptr);
 	free(fractal->mlx_ptr);
@@ -49,6 +64,8 @@ int	mouse_capture(int key, int x, int y, t_complex *fractal)
 		fractal->zoom *= 1.1;
 	else if (key == Button4)
 		fractal->zoom /= 1.1;
+	else if (key == Button1)
+		julia_track(x, y, fractal);
 	render_fractal(fractal);
 	return (0);
 }

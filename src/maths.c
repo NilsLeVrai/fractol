@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:09:35 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/22 15:34:24 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:55:57 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,57 +30,42 @@ t_z	complex_square(t_z z)
 	return (res);
 }
 
-double	scale(double unscaled_num, double old_min, double old_max)
+void	init_atod(t_atod *atod_s)
 {
-	double	gap;
-	double	div;
-	double	new_min;
-	double	new_max;
-
-	new_min = -2;
-	new_max = 2;
-	gap = new_max - new_min;
-	div = gap / old_max - old_min;
-	return (new_min + unscaled_num * div);
+	atod_s->dec = 0.1;
+	atod_s->sign = 1;
+	atod_s->i = 0;
+	atod_s->res = 0;
 }
 
 double	atod(char *s)
 {
-	double	res;
-	double	dec;
-	int		i;
-	int		sign;
+	t_atod	atod_s;
 
-	res = 0;
-	dec = 0.1;
-	i = 0;
-	sign = 1;
-	while (s[i] == 32 || (s[i] >= 9 && s[i] <= 13))
-		i++;
-	if (s[i] == '-' || s[i] == '+')
+	init_atod(&atod_s);
+	while (s[atod_s.i] == 32 || (s[atod_s.i] >= 9 && s[atod_s.i] <= 13))
+		atod_s.i++;
+	if (s[atod_s.i] == '-' || s[atod_s.i] == '+')
 	{
-		if (s[i] == '-')
-			sign = -1;
-		i++;
+		if (s[atod_s.i++] == '-')
+			atod_s.sign = -1;
 	}
-	while (s[i] >= '0' && s[i] <= '9' && s[i] != '.')
+	while (s[atod_s.i] >= '0' && s[atod_s.i] <= '9' && s[atod_s.i] != '.')
 	{
-		res = res * 10 + s[i] - '0';
-		i++;
-		if (s[i] == '.')
+		atod_s.res = atod_s.res * 10 + s[atod_s.i++] - '0';
+		if (s[atod_s.i] == '.')
 			break ;
 	}
-	if (s[i] == '.')
+	if (s[atod_s.i] == '.')
 	{
-		i++;
-		while (s[i] >= '0' && s[i] <= '9')
+		atod_s.i++;
+		while (s[atod_s.i] >= '0' && s[atod_s.i] <= '9')
 		{
-			res += dec * (s[i] - '0');
-			dec /= 10;
-			i++;
+			atod_s.res += atod_s.dec * (s[atod_s.i++] - '0');
+			atod_s.dec /= 10;
 		}
 	}
-	return (res * sign);
+	return (atod_s.res * atod_s.sign);
 }
 
 int	check_atod(char *s)

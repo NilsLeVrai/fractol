@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:01 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/22 15:14:07 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:44:53 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@
 # include "../minilibx-linux/mlx.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
+
+typedef struct s_atod
+{
+	double	res;
+	double	dec;
+	int		i;
+	int		sign;
+}			t_atod;
 
 typedef struct s_img_data_address
 {
@@ -67,4 +75,10 @@ void	run_mlx(t_complex *fractal);
 void	render_fractal(t_complex *fractal);
 int		key_capture(int keycode, t_complex *fractal);
 int		mouse_capture(int key, int x, int y, t_complex *fractal);
+int		closing_window(t_complex *fractal);
+void	print_error(void);
+void	render_pixel(t_complex *fractal, int x, int y);
+void	mandelbrot_or_julia(t_z *z, t_z *c, t_complex *fractal);
+int		julia_track(int x, int y, t_complex *fractal);
+
 #endif

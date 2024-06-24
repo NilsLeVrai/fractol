@@ -1,10 +1,11 @@
 NAME = fractol
 
-SOURCES_FILES = colors.c \
+SOURCES_FILES = errors.c \
 				hooks.c \
 				init.c \
 				main.c \
-				maths.c 
+				maths.c \
+				render.c
 
 SRCS_F_DIR = src
 
