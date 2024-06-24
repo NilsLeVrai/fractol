@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:39:45 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 18:33:57 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:35:59 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	render_pixel(t_complex *fractal, int x, int y)
 		z = complex_add(complex_square(z), c);
 		if ((z.re_z * z.re_z) + (z.im_z * z.im_z) > fractal->modulus)
 		{
-			color = scale(i, 0x12e3ab, fractal->max_iter);
+			color = scale(i, 0x12b26d, fractal->max_iter);
 			my_mlx_pixel_put(&fractal->img, x, y, color);
 			return ;
 		}

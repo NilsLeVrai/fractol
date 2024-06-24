@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:36:29 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 18:06:08 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:30:46 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	print_error(void)
 {
-	printf("Invalid fractal type. Write either mandelbrot or julia ");
-	printf("followed by two numbers.\n");
-	printf("Example: ./fractol mandelbrot\n");
-	printf("Example: ./fractol julia -0.7 0.27015\n");
+	ft_printf("Invalid fractal type. Write either mandelbrot or julia ");
+	ft_printf("followed by two numbers.\n");
+	ft_printf("Example: ./fractol mandelbrot\n");
+	ft_printf("Example: ./fractol julia -0.7 0.27015\n");
 	exit(EXIT_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:01 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 18:30:30 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:36:03 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # define WIDTH 800
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <string.h>
 # include <math.h>
 # include "../minilibx-linux/mlx.h"
+# include "../libft/libft.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
 
@@ -81,5 +81,6 @@ void	print_error(void);
 void	render_pixel(t_complex *fractal, int x, int y);
 void	mandelbrot_or_julia(t_z *z, t_z *c, t_complex *fractal);
 int		julia_click_event(int x, int y, t_complex *fractal);
+void	welcome_instructions(void);
 
 #endif
