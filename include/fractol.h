@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:10:01 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 19:36:03 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:35:06 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef struct s_z
 double	atod(char *s);
 t_z		complex_add(t_z z1, t_z z2);
 t_z		complex_square(t_z z);
+t_z		complex_sinh(t_z z);
+t_z		complex_inverse(t_z z);
 
 char	*ft_strchr(const char *s, int c);
 int		check_atod(char *s);
@@ -79,7 +81,7 @@ int		mouse_capture(int key, int x, int y, t_complex *fractal);
 int		closing_window(t_complex *fractal);
 void	print_error(void);
 void	render_pixel(t_complex *fractal, int x, int y);
-void	mandelbrot_or_julia(t_z *z, t_z *c, t_complex *fractal);
+void	which_fractal(t_z *z, t_z *c, t_complex *fractal);
 int		julia_click_event(int x, int y, t_complex *fractal);
 void	welcome_instructions(void);
 

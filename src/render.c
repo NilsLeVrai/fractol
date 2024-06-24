@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:39:45 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 19:35:59 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:38:28 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int *) dst = color;
 }
 
-void	mandelbrot_or_julia(t_z *z, t_z *c, t_complex *fractal)
+void	which_fractal(t_z *z, t_z *c, t_complex *fractal)
 {
 	if (fractal->type == 1)
 	{
@@ -57,7 +57,7 @@ void	render_pixel(t_complex *fractal, int x, int y)
 	color = 0xFFFFFF;
 	z.re_z = (scale(x, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
 	z.im_z = (scale(y, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
-	mandelbrot_or_julia(&z, &c, fractal);
+	which_fractal(&z, &c, fractal);
 	while (i < fractal->max_iter)
 	{
 		z = complex_add(complex_square(z), c);

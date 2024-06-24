@@ -6,7 +6,7 @@
 /*   By: niabraha <niabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 20:24:42 by niabraha          #+#    #+#             */
-/*   Updated: 2024/06/24 19:38:13 by niabraha         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:37:59 by niabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ int	key_capture(int keysym, t_complex *fractal)
 		fractal->max_iter += 10;
 	else if (keysym == XK_Page_Down && fractal->max_iter > 10)
 		fractal->max_iter -= 10;
-/* 	else if (keysym == XK_space)
-		change_color(fractal); */
 	render_fractal(fractal);
 	return (0);
 }
